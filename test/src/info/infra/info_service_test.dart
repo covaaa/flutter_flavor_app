@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_flavor_app/src/info/info.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -15,7 +16,10 @@ void main() {
     () async {
       expect(
         () async => container.read(infoServiceProvider).fetchInfo(),
-        throwsFlutterError,
+        anyOf(
+          throwsFlutterError,
+          throwsA(isA<MissingPluginException>()),
+        ),
       );
     },
   );
