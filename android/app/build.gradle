@@ -6,7 +6,7 @@ plugins {
 }
 
 // Extract dart-defines properties.
-def dartDefines = [:];
+def dartDefines = [:]
 if (project.hasProperty('dart-defines')) {
     // カンマ区切りかつBase64でエンコードされている dart-defines をデコードして変数に格納
     dartDefines = dartDefines + project.property('dart-defines')
@@ -20,7 +20,7 @@ if (project.hasProperty('dart-defines')) {
 android {
     namespace = "com.example.flutter_flavor_app"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion "27.2.12479018"
+    ndkVersion = "27.2.12479018"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
