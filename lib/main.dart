@@ -12,12 +12,11 @@ void main() {
     () {
       WidgetsFlutterBinding.ensureInitialized();
       return runApp(
-        ProviderScope(
-          observers: [RiverpodObserver()],
-          child: const App(),
-        ),
+        ProviderScope(observers: [RiverpodObserver()], child: const App()),
       );
     },
-    (error, stackTrace) => dev.log('$error', stackTrace: stackTrace),
+    (error, stackTrace) {
+      dev.log('$error', stackTrace: stackTrace);
+    },
   );
 }

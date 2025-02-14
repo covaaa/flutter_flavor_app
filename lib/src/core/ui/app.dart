@@ -10,9 +10,7 @@ class App extends StatelessWidget {
       title: 'Flutter Flavor App',
       theme: ThemeData(
         useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.deepPurple,
-        ),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       darkTheme: ThemeData(
         useMaterial3: true,

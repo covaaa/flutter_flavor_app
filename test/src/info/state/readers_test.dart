@@ -12,27 +12,19 @@ void main() {
   late MockInfoService mockInfoService;
   late ProviderContainer container;
 
-  setUp(
-    () {
-      fakes = Fakes();
-      packageInfo = fakes.packageInfo();
-      mockInfoService = MockInfoService();
-      container = ProviderContainer(
-        overrides: [infoServiceProvider.overrideWithValue(mockInfoService)],
-      );
-    },
-  );
+  setUp(() {
+    fakes = Fakes();
+    packageInfo = fakes.packageInfo();
+    mockInfoService = MockInfoService();
+    container = ProviderContainer(
+      overrides: [infoServiceProvider.overrideWithValue(mockInfoService)],
+    );
+  });
 
   Future<PackageInfo> mockFetchInfo() => mockInfoService.fetchInfo();
 
-  test(
-    'should fetch info',
-    () {
-      when(mockFetchInfo).thenAnswer((invocation) async => packageInfo);
-      expect(
-        container.read(readInfoProvider.future),
-        completion(packageInfo),
-      );
-    },
-  );
+  test('should fetch info', () {
+    when(mockFetchInfo).thenAnswer((invocation) async => packageInfo);
+    expect(container.read(readInfoProvider.future), completion(packageInfo));
+  });
 }

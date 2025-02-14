@@ -9,20 +9,15 @@ class MockInfoService extends Mock implements InfoService {}
 void main() {
   late ProviderContainer container;
 
-  setUp(
-    () {
-      TestWidgetsFlutterBinding.ensureInitialized();
-      container = ProviderContainer();
-    },
-  );
+  setUp(() {
+    TestWidgetsFlutterBinding.ensureInitialized();
+    container = ProviderContainer();
+  });
 
-  test(
-    'should fetch info',
-    () {
-      expect(
-        () => container.read(infoServiceProvider).fetchInfo(),
-        throwsA(isA<MissingPluginException>()),
-      );
-    },
-  );
+  test('should fetch info', () {
+    expect(
+      () => container.read(infoServiceProvider).fetchInfo(),
+      throwsA(isA<MissingPluginException>()),
+    );
+  });
 }
